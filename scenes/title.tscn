@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d1l6kd848pkdw"]
+
+[ext_resource type="Script" uid="uid://bfl5efa7ncdqw" path="res://scripts/title.gd" id="1_4ignj"]
+
+[node name="Title" type="Control" unique_id=1847251620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=424971676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer" unique_id=713116651]
+layout_mode = 2
+script = ExtResource("1_4ignj")
+
+[node name="StartButton" type="Button" parent="CenterContainer/Control" unique_id=742704402]
+layout_mode = 0
+offset_left = -21.0
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 15.0
+text = "Play"

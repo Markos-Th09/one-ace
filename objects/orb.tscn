@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c0c1qsq5rubsf"]
+
+[ext_resource type="SpriteFrames" uid="uid://burcmb7bvmgyu" path="res://assets/orb.tres" id="1_ewy6c"]
+
+[node name="Orb" type="AnimatedSprite2D" unique_id=2074673155]
+sprite_frames = ExtResource("1_ewy6c")
+frame_progress = 0.8971878

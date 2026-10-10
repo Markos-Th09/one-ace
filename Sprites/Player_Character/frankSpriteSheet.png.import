@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2raobyb2fstu"
-path="res://.godot/imported/c13233bc-d97f-4e54-b4b7-f349490da091.png-d3ca5e251db4903d8d05f9f9c6acaea3.ctex"
+uid="uid://cm4un6hqoyihw"
+path="res://.godot/imported/frankSpriteSheet.png-144a804540b624f6b43b3fd8fff61fb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/c13233bc-d97f-4e54-b4b7-f349490da091.png"
-dest_files=["res://.godot/imported/c13233bc-d97f-4e54-b4b7-f349490da091.png-d3ca5e251db4903d8d05f9f9c6acaea3.ctex"]
+source_file="res://Sprites/Player_Character/frankSpriteSheet.png"
+dest_files=["res://.godot/imported/frankSpriteSheet.png-144a804540b624f6b43b3fd8fff61fb8.ctex"]
 
 [params]
 

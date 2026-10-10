@@ -4,12 +4,17 @@
 [ext_resource type="SpriteFrames" uid="uid://bwhhcyoc0bk5x" path="res://assets/player/player.tres" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c0c1qsq5rubsf" path="res://objects/orb.tscn" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://c0jthyhn4f6qv" path="res://scripts/player_controller.gd" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://b5n8u0xdfbfpd" path="res://Scripts/UI/Info_Layer.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://crybym88387u1" path="res://assets/environment/bg.png" id="5_tefeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68u1n"]
-radius = 47.0
-height = 100.0
+radius = 33.0
+height = 106.0
 
-[sub_resource type="TileSet" id="TileSet_68u1n"]
+[sub_resource type="TileSet" id="TileSet_6jxle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68u1n"]
+size = Vector2(718, 52)
 
 [node name="world" type="Node2D" unique_id=876435856]
 position = Vector2(-2, 0)
@@ -27,9 +32,9 @@ position = Vector2(58, 543)
 script = ExtResource("3_jyhfs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=306165926]
-scale = Vector2(0.07999846, 0.07999846)
+scale = Vector2(0.33, 0.33)
 sprite_frames = ExtResource("2_jyhfs")
-animation = &"Death"
+animation = &"Idle"
 metadata/flip_h = false
 
 [node name="AnimationTree" type="AnimationTree" parent="Player" unique_id=17820859]
@@ -38,12 +43,116 @@ root_node = NodePath("../AnimationPlayer")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=924343811]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=430805246]
-scale = Vector2(0.89304006, 1)
+position = Vector2(7, -2)
 shape = SubResource("CapsuleShape2D_68u1n")
 debug_color = Color(3.946722e-06, 0.5800216, 0.8042386, 0.41960785)
 
-[node name="TileMap" type="TileMap" parent="." unique_id=1704761806]
-position = Vector2(58, 543)
-scale = Vector2(0.07999846, 0.07999846)
-tile_set = SubResource("TileSet_68u1n")
-format = 2
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=134125707]
+tile_set = SubResource("TileSet_6jxle")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=906835143]
+position = Vector2(363, 623)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1946346329]
+shape = SubResource("RectangleShape2D_68u1n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1008893046]
+
+[node name="Info_Layer" type="Control" parent="CanvasLayer" unique_id=466233951]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_tbgi4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info_Layer" unique_id=961682314]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Info_Layer/VBoxContainer" unique_id=59075178]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer" unique_id=1492919035]
+layout_mode = 2
+
+[node name="StateLabel" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer" unique_id=1421912756]
+layout_mode = 2
+text = "STATE: "
+
+[node name="State" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer" unique_id=174796448]
+unique_name_in_owner = true
+layout_mode = 2
+text = "*****"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Info_Layer/VBoxContainer" unique_id=873094483]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer2" unique_id=220404814]
+layout_mode = 2
+
+[node name="DashedLabel" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer2" unique_id=519128081]
+layout_mode = 2
+text = "Dashed: "
+
+[node name="Dashed" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer2" unique_id=1990818436]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Info_Layer/VBoxContainer" unique_id=1591339084]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer3" unique_id=1597478806]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer3" unique_id=1900209920]
+layout_mode = 2
+text = "Health:"
+
+[node name="Health" type="Label" parent="CanvasLayer/Info_Layer/VBoxContainer/HBoxContainer3" unique_id=934992673]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3"
+
+[node name="Game_Over" type="Control" parent="CanvasLayer" unique_id=137882353]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game_Over_Text" type="Label" parent="CanvasLayer/Game_Over" unique_id=1880806792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1839988164]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CenterContainer" unique_id=76020992]
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/ParallaxBackground" unique_id=871144079]
+position = Vector2(592, 339)
+texture = ExtResource("5_tefeu")

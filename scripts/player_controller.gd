@@ -58,7 +58,7 @@ enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 ## The speed of gravity applied to the character
 @export_range(0, 1000, 0.1) var GRAVITY: float = 500.0
 ## The speed of the jump when leaving the ground
-@export_range(0, 1000, 0.1) var JUMP_FORCE: float = 200.0
+@export_range(0, 1000, 0.1) var JUMP_FORCE: float = 300.0
 ## How fast the character's vertical speed goes back to zero when cancelling a jump
 @export_range(0, 1000, 0.1) var JUMP_CANCEL_FORCE: float = 800.0
 ## The speed the character falls while sliding on a wall. Currently this is only active if wall jumping is active as well.

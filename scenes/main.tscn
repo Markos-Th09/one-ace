@@ -1,11 +1,15 @@
-[gd_scene format=3 uid="uid://k7s2itid41ah"]
+[gd_scene format=3]
 
-[ext_resource type="SpriteFrames" uid="uid://csesydl17xs2i" path="res://assets/chipper/chipper.tres" id="1_0wfyh"]
-[ext_resource type="SpriteFrames" uid="uid://bwhhcyoc0bk5x" path="res://assets/player/player.tres" id="2_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://c0c1qsq5rubsf" path="res://objects/orb.tscn" id="2_sugp2"]
-[ext_resource type="Script" uid="uid://c0jthyhn4f6qv" path="res://scripts/player_controller.gd" id="3_jyhfs"]
-[ext_resource type="Script" uid="uid://b5n8u0xdfbfpd" path="res://Scripts/UI/Info_Layer.gd" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://crybym88387u1" path="res://assets/environment/bg.png" id="5_tefeu"]
+[ext_resource type="Script" path="res://scripts/World/Game_Controller.gd" id="1_choun"]
+[ext_resource type="SpriteFrames" path="res://assets/player/player.tres" id="2_jyhfs"]
+[ext_resource type="PackedScene" path="res://objects/orb.tscn" id="2_sugp2"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="3_jyhfs"]
+[ext_resource type="SpriteFrames" path="res://assets/orb.tres" id="3_o6xl0"]
+[ext_resource type="Script" path="res://scripts/UI/Info_Layer.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" path="res://assets/environment/bg.png" id="5_tefeu"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="6_ya4ey"]
+[ext_resource type="PackedScene" path="res://objects/Enemies/chipper.tscn" id="9_eb6dy"]
+[ext_resource type="Script" path="res://scripts/enemies/chipper_controller.gd" id="10_trceg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68u1n"]
 radius = 33.0
@@ -18,17 +22,16 @@ size = Vector2(718, 52)
 
 [node name="world" type="Node2D" unique_id=876435856]
 position = Vector2(-2, 0)
+script = ExtResource("1_choun")
 
-[node name="Chipper" type="AnimatedSprite2D" parent="." unique_id=137538276]
-sprite_frames = ExtResource("1_0wfyh")
-animation = &"walk"
-
-[node name="Orb" parent="." unique_id=2074673155 instance=ExtResource("2_sugp2")]
+[node name="Orb" type="AnimatedSprite2D" parent="." unique_id=2074673155 instance=ExtResource("2_sugp2")]
 position = Vector2(192, 366)
+sprite_frames = ExtResource("3_o6xl0")
 frame_progress = 0.57381487
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1015561603]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1015561603 groups=["player"]]
 position = Vector2(58, 543)
+collision_layer = 2
 script = ExtResource("3_jyhfs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=306165926]
@@ -46,6 +49,11 @@ root_node = NodePath("../AnimationPlayer")
 position = Vector2(7, -2)
 shape = SubResource("CapsuleShape2D_68u1n")
 debug_color = Color(3.946722e-06, 0.5800216, 0.8042386, 0.41960785)
+
+[node name="Health" type="Node" parent="Player" unique_id=629197139]
+script = ExtResource("6_ya4ey")
+max_health = 4
+invulnerability_time = 0.9
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=134125707]
 tile_set = SubResource("TileSet_6jxle")
@@ -156,3 +164,12 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer/ParallaxBackground" unique_id=871144079]
 position = Vector2(592, 339)
 texture = ExtResource("5_tefeu")
+
+[node name="Chipper" type="CharacterBody2D" parent="." unique_id=1789054752 groups=["enemy"] instance=ExtResource("9_eb6dy")]
+position = Vector2(480, 548)
+collision_layer = 4
+script = ExtResource("10_trceg")
+speed = 55.0
+
+[connection signal="died" from="Player" to="." method="_on_player_character__dead"]
+[connection signal="health_changed" from="Player" to="CanvasLayer/Info_Layer" method="_on_player_character__hit_points"]

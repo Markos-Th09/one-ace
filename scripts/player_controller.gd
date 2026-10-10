@@ -1,5 +1,14 @@
 class_name PlatformerController
 extends CharacterBody2D
+const HealthComponent = preload("res://scripts/components/health.gd")
+signal health_changed(current: int)
+signal died
+signal currency_changed(current: int)
+var currency: int = 0
+@onready var health: HealthComponent = $Health
+var hit_stun: float = 0.0
+var attack_cooldown: float = 0.0
+var facing_left: bool = false
 ## An extendable character for platforming games including features like coyote time,
 ## jump buffering, jump cancelling, sprinting, and wall jumping.
 ##
@@ -71,6 +80,16 @@ enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 
 ## The players current state
 var state: int = IDLE
+var sprite_base_scale: Vector2 = Vector2.ONE
+
+
+func _ready() -> void:
+	sprite_base_scale = PLAYER_SPRITE.scale
+	PLAYER_SPRITE.play(&"Idle")
+	add_to_group(&"player")
+	health.damaged.connect(_on_damaged)
+	health.died.connect(_on_died)
+	health.healed.connect(_on_healed)
 ## The player is sprinting when [param sprinting] is true
 var sprinting := false
 ## The player can jump when [param can_jump] is true
@@ -95,18 +114,104 @@ func _physics_process(delta: float) -> void:
 ## Overrideable physics process used by the controller that calls whatever functions should be called
 ## and any logic that needs to be done on the [param _physics_process] tick
 func physics_tick(delta: float) -> void:
+	if not health.is_alive():
+		return
+	hit_stun = maxf(hit_stun - delta, 0.0)
+	attack_cooldown = maxf(attack_cooldown - delta, 0.0)
+	if Input.is_action_just_pressed(&"attack") and attack_cooldown == 0.0:
+		attack()
+	PLAYER_SPRITE.modulate.a = 0.45 if health.is_invulnerable() and sin(Time.get_ticks_msec() * 0.03) > 0.0 else 1.0
+	if hit_stun > 0.0:
+		handle_gravity(delta)
+		move_and_slide()
+		return
 	var inputs: Dictionary = get_inputs()
 	handle_jump(delta, inputs.input_direction, inputs.jump_strength, inputs.jump_pressed, inputs.jump_released)
 	handle_sprint(inputs.sprint_strength)
 	handle_velocity(delta, inputs.input_direction)
 
-	manage_animations()
 	manage_state()
+	manage_animations()
 
 	# We have to handle the gravity after the state
 	handle_gravity(delta)
 
 	move_and_slide()
+
+func is_alive() -> bool:
+	return health.is_alive()
+
+func collect_currency(amount: int) -> void:
+	if amount <= 0 or not health.is_alive():
+		return
+	currency += amount
+	currency_changed.emit(currency)
+	get_tree().call_group(&"sound_effects", &"play_event", &"orb")
+
+func heal(amount: int) -> bool:
+	if amount <= 0 or not health.is_alive() or health.current_health >= health.max_health:
+		return false
+	health.heal(amount)
+	get_tree().call_group(&"sound_effects", &"play_event", &"heal")
+	return true
+
+func respawn(spawn_position: Vector2) -> void:
+	health.reset()
+	health.grant_immunity(1.5)
+	global_position = spawn_position
+	velocity = Vector2.ZERO
+	hit_stun = 0.0
+	attack_cooldown = 0.0
+	can_jump = false
+	jumping = false
+	should_jump = false
+	state = IDLE
+	PLAYER_SPRITE.modulate = Color.WHITE
+	PLAYER_SPRITE.play(&"Idle")
+	health_changed.emit(health.current_health)
+	set_physics_process(true)
+	var camera: Camera2D = find_child("Camera2D", false) as Camera2D
+	if camera != null:
+		camera.reset_smoothing()
+
+func attack() -> void:
+	if not health.is_alive() or attack_cooldown > 0.0:
+		return
+	attack_cooldown = 0.45
+	get_tree().call_group(&"sound_effects", &"play_event", &"attack")
+	var facing: float = -1.0 if facing_left else 1.0
+	for candidate: Node in get_tree().get_nodes_in_group(&"enemy"):
+		var enemy: Node2D = candidate as Node2D
+		if enemy == null or not enemy.has_method("take_damage"):
+			continue
+		var offset_to_enemy: Vector2 = enemy.global_position - global_position
+		if absf(offset_to_enemy.x) <= 115.0 and absf(offset_to_enemy.y) <= 65.0 and offset_to_enemy.x * facing >= -15.0:
+			var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, 1)
+			if get_world_2d().direct_space_state.intersect_ray(query).is_empty():
+				enemy.call("take_damage", 1, global_position)
+
+func take_damage(amount: int, source_position: Vector2 = Vector2.ZERO) -> bool:
+	if not health.apply_damage(amount):
+		return false
+	if health.is_alive():
+		hit_stun = 0.2
+		velocity = Vector2(180.0 if global_position.x >= source_position.x else -180.0, -120.0)
+	return true
+
+func _on_damaged(_amount: int, current: int) -> void:
+	health_changed.emit(current)
+	get_tree().call_group(&"sound_effects", &"play_event", &"hurt")
+
+func _on_healed(_amount: int, current: int) -> void:
+	health_changed.emit(current)
+
+func _on_died() -> void:
+	velocity = Vector2.ZERO
+	PLAYER_SPRITE.modulate = Color.WHITE
+	PLAYER_SPRITE.scale = sprite_base_scale
+	PLAYER_SPRITE.play(&"Death")
+	died.emit()
+	get_tree().call_group(&"sound_effects", &"play_event", &"death")
 
 
 ## Manages the character's current state based on the current velocity vector
@@ -129,20 +234,30 @@ func manage_state() -> void:
 ## the current horizontal velocity. The expected default animations are [param Idle], [param Walk], [param Jump], and [param Fall]
 func manage_animations() -> void:
 	if velocity.x > 0:
-		PLAYER_SPRITE.flip_h = false
+		facing_left = false
 	elif velocity.x < 0:
-		PLAYER_SPRITE.flip_h = true
+		facing_left = true
+	PLAYER_SPRITE.flip_h = facing_left
+	if attack_cooldown > 0.25:
+		PLAYER_SPRITE.play(&"Attack")
+		# The supplied attack pose points left.
+		PLAYER_SPRITE.flip_h = not facing_left
+		PLAYER_SPRITE.scale = sprite_base_scale * (320.0 / 900.0)
+		return
 	match state:
 		IDLE:
-			ANIMATION_PLAYER.play("Idle")
+			PLAYER_SPRITE.play(&"Idle")
 		WALK:
-			ANIMATION_PLAYER.play("Walk")
+			PLAYER_SPRITE.play(&"Walk")
 		JUMP:
-			ANIMATION_PLAYER.play("Jump")
+			PLAYER_SPRITE.play(&"Jump")
 		FALL:
-			ANIMATION_PLAYER.play("Fall")
+			PLAYER_SPRITE.play(&"Fall")
 		WALL_SLIDE:
-			ANIMATION_PLAYER.play("Fall") #
+			PLAYER_SPRITE.play(&"Fall")
+	# The supplied sheets use different canvas sizes; keep their display height consistent.
+	var frame_texture: Texture2D = PLAYER_SPRITE.sprite_frames.get_frame_texture(PLAYER_SPRITE.animation, 0)
+	PLAYER_SPRITE.scale = sprite_base_scale * (320.0 / float(frame_texture.get_height()))
 
 
 ## Gets the strength and status of the mapped actions
@@ -233,6 +348,7 @@ func handle_jump(delta: float, move_direction: Vector2, jump_strength: float = 0
 ## Applies a jump force to the character in the specified direction, defaults to [param JUMP_FORCE] and [param JUMP_DIRECTIONS.UP]
 ## but can be passed a new force and direction
 func apply_jump(move_direction: Vector2, jump_force: float = JUMP_FORCE, jump_direction: int = JUMP_DIRECTIONS.UP) -> void:
+	get_tree().call_group(&"sound_effects", &"play_event", &"jump")
 	can_jump = false
 	should_jump = false
 	jumping = true

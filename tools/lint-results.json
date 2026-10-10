@@ -1,0 +1,536 @@
+{
+  "ok": false,
+  "project_path": "C:\\Users\\Billy\\Documents\\one-ace",
+  "counts": {
+    "total": 55,
+    "errors": 2,
+    "warnings": 53,
+    "parse_errors": 0
+  },
+  "categories": {
+    "godot3_api": 53,
+    "godot3_shader": 0,
+    "inference": 0,
+    "node_ref": 0,
+    "unique_name": 0,
+    "signal_target": 0,
+    "missing_resource": 0,
+    "input_action": 2,
+    "group_ref": 0,
+    "res_path": 0,
+    "animation_ref": 0
+  },
+  "scan_summary": {
+    "gd": 39,
+    "tscn": 16,
+    "tres": 6,
+    "shader": 1,
+    "project_godot": 1,
+    "scene_script_pairs": 34,
+    "node_paths_checked": 117,
+    "skipped_dynamic_paths": 0,
+    "skipped_gdignore_dirs": 0
+  },
+  "suppressions": {
+    "total": 0,
+    "used": 0,
+    "unused": []
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "category": "input_action",
+      "rule": "undefined_input_action",
+      "message": "`Input.is_action_just_pressed()` uses the action `dash`, which nothing defines: it is not in project.godot's `[input]` section, it is not one of the engine's built-in `ui_*` actions, and no script calls `InputMap.add_action(\"dash\")`. At runtime Godot prints `ERROR: The InputMap action \"dash\" doesn't exist` (or silently answers false, depending on the call) and the input never fires. Actions this project defines: attack, down, jump, left, restart, right, sprint, up.",
+      "file": "res://scripts/player_character/State_Machine/in_air.gd",
+      "line": 6,
+      "suggested_fix": "or create the action and bind a key (32 = Space; pick your own keycode):\n  godot --headless --path /absolute/project --script /absolute/path/to/godot/scripts/core/dispatcher.gd project_batch '{\"actions\":[{\"type\":\"add_input_action\",\"action_name\":\"dash\"},{\"type\":\"add_input_event\",\"action_name\":\"dash\",\"event\":{\"__resource_type\":\"InputEventKey\",\"properties\":{\"physical_keycode\":32}}}]}'\nIf the action is instead created at runtime, call `InputMap.add_action(\"dash\")` before the first use, or guard the use with `InputMap.has_action(\"dash\")` \u2014 the linter finds either and goes quiet."
+    },
+    {
+      "severity": "error",
+      "category": "input_action",
+      "rule": "undefined_input_action",
+      "message": "`Input.is_action_just_pressed()` uses the action `dash`, which nothing defines: it is not in project.godot's `[input]` section, it is not one of the engine's built-in `ui_*` actions, and no script calls `InputMap.add_action(\"dash\")`. At runtime Godot prints `ERROR: The InputMap action \"dash\" doesn't exist` (or silently answers false, depending on the call) and the input never fires. Actions this project defines: attack, down, jump, left, restart, right, sprint, up.",
+      "file": "res://scripts/player_character/State_Machine/on_ground.gd",
+      "line": 11,
+      "suggested_fix": "or create the action and bind a key (32 = Space; pick your own keycode):\n  godot --headless --path /absolute/project --script /absolute/path/to/godot/scripts/core/dispatcher.gd project_batch '{\"actions\":[{\"type\":\"add_input_action\",\"action_name\":\"dash\"},{\"type\":\"add_input_event\",\"action_name\":\"dash\",\"event\":{\"__resource_type\":\"InputEventKey\",\"properties\":{\"physical_keycode\":32}}}]}'\nIf the action is instead created at runtime, call `InputMap.add_action(\"dash\")` before the first use, or guard the use with `InputMap.has_action(\"dash\")` \u2014 the linter finds either and goes quiet."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "tilemap_class",
+      "message": "`TileMap` still exists in Godot 4.7 but is deprecated; new code should use `TileMapLayer`.",
+      "file": "res://objects/TileMaps/tile_map_forest_dark.tscn",
+      "line": 582,
+      "suggested_fix": "`TileMap` -> `TileMapLayer`. One TileMapLayer node per layer; `paint_tilemap` targets TileMapLayer."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "parallaxbackground_class",
+      "message": "`ParallaxBackground` still exists in Godot 4.7 but is deprecated; new code should use `Parallax2D`.",
+      "file": "res://scenes/main.tscn",
+      "line": 162,
+      "suggested_fix": "`ParallaxBackground` -> `Parallax2D`. `Parallax2D` replaces the ParallaxBackground/ParallaxLayer pair (4.3+)."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/Classes/state_machine.gd",
+      "line": 68,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/in_air.gd",
+      "line": 7,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/in_air.gd",
+      "line": 13,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/in_air.gd",
+      "line": 15,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/in_air.gd",
+      "line": 19,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/motion.gd",
+      "line": 53,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/motion.gd",
+      "line": 64,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/on_ground.gd",
+      "line": 9,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/on_ground.gd",
+      "line": 12,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/on_ground.gd",
+      "line": 17,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/boost.gd",
+      "line": 15,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/boost.gd",
+      "line": 22,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/boost.gd",
+      "line": 61,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/boost.gd",
+      "line": 63,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/boost.gd",
+      "line": 65,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 16,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 17,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 23,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 24,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 25,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 38,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 39,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 40,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 55,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 56,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 57,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 62,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 75,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 76,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/climb.gd",
+      "line": 77,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/damage.gd",
+      "line": 21,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/fall.gd",
+      "line": 18,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/hold.gd",
+      "line": 14,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/idle.gd",
+      "line": 21,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/idle.gd",
+      "line": 23,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/jump.gd",
+      "line": 36,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/run.gd",
+      "line": 16,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/run.gd",
+      "line": 27,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/walk.gd",
+      "line": 17,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/walk.gd",
+      "line": 27,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_jump.gd",
+      "line": 30,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_jump.gd",
+      "line": 45,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_slide.gd",
+      "line": 14,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_slide.gd",
+      "line": 16,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_slide.gd",
+      "line": 34,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_slide.gd",
+      "line": 36,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/State_Machine/states/wall_slide.gd",
+      "line": 40,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/player_character.gd",
+      "line": 67,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/player_character.gd",
+      "line": 68,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/player_character.gd",
+      "line": 157,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    },
+    {
+      "severity": "warning",
+      "category": "godot3_api",
+      "rule": "emit_signal_string",
+      "message": "`emit_signal(\"name\", ...)` still works in 4.7 but the signal-object form is the current API and is checked at parse time instead of by string lookup.",
+      "file": "res://scripts/player_character/player_character.gd",
+      "line": 163,
+      "suggested_fix": "`emit_signal(\"died\", score)` -> `died.emit(score)`."
+    }
+  ]
+}

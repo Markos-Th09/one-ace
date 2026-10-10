@@ -1,0 +1,348 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://scripts/casino_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://objects/Player_Character/ace.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://objects/Enemies/chipper.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://assets/casino/background.png" id="4"]
+[ext_resource type="TileSet" path="res://assets/casino/tileset.tres" id="5"]
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="5_j1feo"]
+[ext_resource type="PackedScene" path="res://objects/orb_collectible.tscn" id="6"]
+[ext_resource type="Script" path="res://scripts/enemies/chipper_controller.gd" id="7_7shg7"]
+[ext_resource type="PackedScene" path="res://objects/Enemies/crusher.tscn" id="8_ep5jm"]
+[ext_resource type="Script" path="res://scripts/orb_collectible.gd" id="9_0emat"]
+[ext_resource type="Script" path="res://scripts/enemies/crusher_controller.gd" id="9_csd1f"]
+[ext_resource type="PackedScene" path="res://objects/cherry_healing.tscn" id="12_matrv"]
+[ext_resource type="Script" path="res://scripts/cherry_healing.gd" id="13_swl0b"]
+[ext_resource type="Script" path="res://scripts/sound_events.gd" id="14_s8h1r"]
+[ext_resource type="PackedScene" path="res://objects/checkpoint.tscn" id="15_xsec5"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="16_pxkcg"]
+
+[sub_resource type="StyleBoxFlat" id="HUDStyle"]
+bg_color = Color(0.08, 0.025, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.59, 0.21, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CasinoLevel" type="Node2D" unique_id=1866843378]
+script = ExtResource("1")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1862550137]
+layer = -10
+
+[node name="Backdrop" type="TextureRect" parent="Background" unique_id=835287125]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1063644902]
+scale = Vector2(0.102073364, 0.102073364)
+tile_map_data = PackedByteArray("AAAAAAwAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA4AAAABAAAAAAAAAA8AAAABAAAAAAABAAwAAAAAAAAAAAABAA0AAAABAAAAAAABAA4AAAABAAAAAAABAA8AAAABAAAAAAACAAwAAAAAAAAAAAACAA0AAAABAAAAAAACAA4AAAABAAAAAAACAA8AAAABAAAAAAADAAwAAAAAAAAAAAADAA0AAAABAAAAAAADAA4AAAABAAAAAAADAA8AAAABAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAABAAAAAAAEAA4AAAABAAAAAAAEAA8AAAABAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAABAAAAAAAFAA4AAAABAAAAAAAFAA8AAAABAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAABAAAAAAAGAA4AAAABAAAAAAAGAA8AAAABAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAABAAAAAAAHAA4AAAABAAAAAAAHAA8AAAABAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAABAAAAAAAIAA4AAAABAAAAAAAIAA8AAAABAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAABAAAAAAAJAA4AAAABAAAAAAAJAA8AAAABAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAABAAAAAAAKAA4AAAABAAAAAAAKAA8AAAABAAAAAAALAAwAAAAAAAAAAAALAA0AAAABAAAAAAALAA4AAAABAAAAAAALAA8AAAABAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAABAAAAAAAMAA4AAAABAAAAAAAMAA8AAAABAAAAAAANAAwAAAAAAAAAAAANAA0AAAABAAAAAAANAA4AAAABAAAAAAANAA8AAAABAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAABAAAAAAAOAA4AAAABAAAAAAAOAA8AAAABAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAABAAAAAAAPAA4AAAABAAAAAAAPAA8AAAABAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAABAAAAAAAQAA4AAAABAAAAAAAQAA8AAAABAAAAAAARAAwAAAAAAAAAAAARAA0AAAABAAAAAAARAA4AAAABAAAAAAARAA8AAAABAAAAAAATAAwAAAAAAAAAAAATAA0AAAABAAAAAAATAA4AAAABAAAAAAATAA8AAAABAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAABAAAAAAAUAA4AAAABAAAAAAAUAA8AAAABAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAABAAAAAAAVAA4AAAABAAAAAAAVAA8AAAABAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAABAAAAAAAWAA4AAAABAAAAAAAWAA8AAAABAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAABAAAAAAAXAA4AAAABAAAAAAAXAA8AAAABAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAABAAAAAAAYAA4AAAABAAAAAAAYAA8AAAABAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAABAAAAAAAZAA4AAAABAAAAAAAZAA8AAAABAAAAAAAaAAwAAAAAAAAAAAAaAA0AAAABAAAAAAAaAA4AAAABAAAAAAAaAA8AAAABAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAABAAAAAAAbAA4AAAABAAAAAAAbAA8AAAABAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAABAAAAAAAcAA4AAAABAAAAAAAcAA8AAAABAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAABAAAAAAAdAA4AAAABAAAAAAAdAA8AAAABAAAAAAAeAAwAAAAAAAAAAAAeAA0AAAABAAAAAAAeAA4AAAABAAAAAAAeAA8AAAABAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAABAAAAAAAfAA4AAAABAAAAAAAfAA8AAAABAAAAAAAgAAwAAAAAAAAAAAAgAA0AAAABAAAAAAAgAA4AAAABAAAAAAAgAA8AAAABAAAAAAAhAAwAAAAAAAAAAAAhAA0AAAABAAAAAAAhAA4AAAABAAAAAAAhAA8AAAABAAAAAAAiAAwAAAAAAAAAAAAiAA0AAAABAAAAAAAiAA4AAAABAAAAAAAiAA8AAAABAAAAAAAjAAwAAAAAAAAAAAAjAA0AAAABAAAAAAAjAA4AAAABAAAAAAAjAA8AAAABAAAAAAAkAAwAAAAAAAAAAAAkAA0AAAABAAAAAAAkAA4AAAABAAAAAAAkAA8AAAABAAAAAAAmAAwAAAAAAAAAAAAmAA0AAAABAAAAAAAmAA4AAAABAAAAAAAmAA8AAAABAAAAAAAnAAwAAAAAAAAAAAAnAA0AAAABAAAAAAAnAA4AAAABAAAAAAAnAA8AAAABAAAAAAAoAAwAAAAAAAAAAAAoAA0AAAABAAAAAAAoAA4AAAABAAAAAAAoAA8AAAABAAAAAAApAAwAAAAAAAAAAAApAA0AAAABAAAAAAApAA4AAAABAAAAAAApAA8AAAABAAAAAAAqAAwAAAAAAAAAAAAqAA0AAAABAAAAAAAqAA4AAAABAAAAAAAqAA8AAAABAAAAAAArAAwAAAAAAAAAAAArAA0AAAABAAAAAAArAA4AAAABAAAAAAArAA8AAAABAAAAAAAsAAwAAAAAAAAAAAAsAA0AAAABAAAAAAAsAA4AAAABAAAAAAAsAA8AAAABAAAAAAAtAAwAAAAAAAAAAAAtAA0AAAABAAAAAAAtAA4AAAABAAAAAAAtAA8AAAABAAAAAAAuAAwAAAAAAAAAAAAuAA0AAAABAAAAAAAuAA4AAAABAAAAAAAuAA8AAAABAAAAAAAvAAwAAAAAAAAAAAAvAA0AAAABAAAAAAAvAA4AAAABAAAAAAAvAA8AAAABAAAAAAAwAAwAAAAAAAAAAAAwAA0AAAABAAAAAAAwAA4AAAABAAAAAAAwAA8AAAABAAAAAAAxAAwAAAAAAAAAAAAxAA0AAAABAAAAAAAxAA4AAAABAAAAAAAxAA8AAAABAAAAAAAyAAwAAAAAAAAAAAAyAA0AAAABAAAAAAAyAA4AAAABAAAAAAAyAA8AAAABAAAAAAAzAAwAAAAAAAAAAAAzAA0AAAABAAAAAAAzAA4AAAABAAAAAAAzAA8AAAABAAAAAAA0AAwAAAAAAAAAAAA0AA0AAAABAAAAAAA0AA4AAAABAAAAAAA0AA8AAAABAAAAAAA1AAwAAAAAAAAAAAA1AA0AAAABAAAAAAA1AA4AAAABAAAAAAA1AA8AAAABAAAAAAA2AAwAAAAAAAAAAAA2AA0AAAABAAAAAAA2AA4AAAABAAAAAAA2AA8AAAABAAAAAAA3AAwAAAAAAAAAAAA3AA0AAAABAAAAAAA3AA4AAAABAAAAAAA3AA8AAAABAAAAAAA4AAwAAAAAAAAAAAA4AA0AAAABAAAAAAA4AA4AAAABAAAAAAA4AA8AAAABAAAAAAA5AAwAAAAAAAAAAAA5AA0AAAABAAAAAAA5AA4AAAABAAAAAAA5AA8AAAABAAAAAAA6AAwAAAAAAAAAAAA6AA0AAAABAAAAAAA6AA4AAAABAAAAAAA6AA8AAAABAAAAAAA7AAwAAAAAAAAAAAA7AA0AAAABAAAAAAA7AA4AAAABAAAAAAA7AA8AAAABAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAEAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAEAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAEAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAEAAAARAAoAAAAAAAAAAAARAAsAAAAAAAEAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAEAAAAeAAoAAAAAAAAAAAAeAAsAAAAAAAEAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAEAAAAgAAoAAAAAAAAAAAAgAAsAAAAAAAEAAAAhAAoAAAAAAAAAAAAhAAsAAAAAAAEAAAAoAAsAAAAAAAAAAAApAAsAAAAAAAAAAAAqAAsAAAAAAAAAAAArAAsAAAAAAAAAAAAsAAsAAAAAAAAAAAAuAAoAAAAAAAAAAAAuAAsAAAAAAAEAAAAvAAoAAAAAAAAAAAAvAAsAAAAAAAEAAAAwAAoAAAAAAAAAAAAwAAsAAAAAAAEAAAAxAAoAAAAAAAAAAAAxAAsAAAAAAAEAAAAyAAoAAAAAAAAAAAAyAAsAAAAAAAEAAAA0AAkAAAAAAAAAAAA0AAoAAAAAAAEAAAA0AAsAAAAAAAEAAAA1AAkAAAAAAAAAAAA1AAoAAAAAAAEAAAA1AAsAAAAAAAEAAAA2AAkAAAAAAAAAAAA2AAoAAAAAAAEAAAA2AAsAAAAAAAEAAAA3AAkAAAAAAAAAAAA3AAoAAAAAAAEAAAA3AAsAAAAAAAEAAAA4AAkAAAAAAAAAAAA4AAoAAAAAAAEAAAA4AAsAAAAAAAEAAAA5AAkAAAAAAAAAAAA5AAoAAAAAAAEAAAA5AAsAAAAAAAEAAAA6AAkAAAAAAAAAAAA6AAoAAAAAAAEAAAA6AAsAAAAAAAEAAAA7AAkAAAAAAAAAAAA7AAoAAAAAAAEAAAA7AAsAAAAAAAEAAAAzAAoAAAAAAAAAAAAzAAsAAAAAAAEAAAA=")
+tile_set = ExtResource("5")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1672248668 groups=["player"] instance=ExtResource("2")]
+position = Vector2(128, 700)
+collision_layer = 2
+script = ExtResource("5_j1feo")
+ACCELERATION = 850.0
+MAX_SPEED = 160.0
+JUMP_FORCE = 310.0
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1783963332]
+
+[node name="Chipper1" type="CharacterBody2D" parent="Enemies" unique_id=1693258267 groups=["enemy"] instance=ExtResource("3")]
+position = Vector2(600, 655)
+collision_layer = 4
+script = ExtResource("7_7shg7")
+patrol_distance = 65.0
+speed = 55.0
+
+[node name="Chipper2" type="CharacterBody2D" parent="Enemies" unique_id=1464223186 groups=["enemy"] instance=ExtResource("3")]
+position = Vector2(1472, 655)
+collision_layer = 4
+script = ExtResource("7_7shg7")
+patrol_distance = 65.0
+speed = 55.0
+
+[node name="Chipper3" type="CharacterBody2D" parent="Enemies" unique_id=1805874389 groups=["enemy"] instance=ExtResource("3")]
+position = Vector2(1952, 591)
+collision_layer = 4
+script = ExtResource("7_7shg7")
+patrol_distance = 65.0
+speed = 55.0
+
+[node name="Chipper4" type="CharacterBody2D" parent="Enemies" unique_id=828247553 groups=["enemy"] instance=ExtResource("3")]
+position = Vector2(2688, 655)
+collision_layer = 4
+script = ExtResource("7_7shg7")
+patrol_distance = 65.0
+speed = 55.0
+
+[node name="Chipper5" type="CharacterBody2D" parent="Enemies" unique_id=371432981 groups=["enemy"] instance=ExtResource("3")]
+position = Vector2(3100, 591)
+collision_layer = 4
+script = ExtResource("7_7shg7")
+patrol_distance = 65.0
+speed = 55.0
+
+[node name="Crusher1" type="CharacterBody2D" parent="Enemies" unique_id=565203844 groups=["enemy"] instance=ExtResource("8_ep5jm")]
+position = Vector2(1770, 430)
+collision_layer = 4
+script = ExtResource("9_csd1f")
+
+[node name="Crusher2" type="CharacterBody2D" parent="Enemies" unique_id=1936212836 groups=["enemy"] instance=ExtResource("8_ep5jm")]
+position = Vector2(3450, 350)
+collision_layer = 4
+script = ExtResource("9_csd1f")
+
+[node name="Collectibles" type="Node2D" parent="." unique_id=1876913891]
+
+[node name="Orb1" type="Area2D" parent="Collectibles" unique_id=1469995918 instance=ExtResource("6")]
+position = Vector2(224, 688)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb2" type="Area2D" parent="Collectibles" unique_id=991685659 instance=ExtResource("6")]
+position = Vector2(352, 688)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb3" type="Area2D" parent="Collectibles" unique_id=2018334639 instance=ExtResource("6")]
+position = Vector2(544, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb4" type="Area2D" parent="Collectibles" unique_id=632598570 instance=ExtResource("6")]
+position = Vector2(672, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb5" type="Area2D" parent="Collectibles" unique_id=841143715 instance=ExtResource("6")]
+position = Vector2(928, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb6" type="Area2D" parent="Collectibles" unique_id=1149690317 instance=ExtResource("6")]
+position = Vector2(1056, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb7" type="Area2D" parent="Collectibles" unique_id=1115880811 instance=ExtResource("6")]
+position = Vector2(1312, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb8" type="Area2D" parent="Collectibles" unique_id=1362291867 instance=ExtResource("6")]
+position = Vector2(1568, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb9" type="Area2D" parent="Collectibles" unique_id=1989570479 instance=ExtResource("6")]
+position = Vector2(1760, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb10" type="Area2D" parent="Collectibles" unique_id=2013212983 instance=ExtResource("6")]
+position = Vector2(1952, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb11" type="Area2D" parent="Collectibles" unique_id=1741902792 instance=ExtResource("6")]
+position = Vector2(2144, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb12" type="Area2D" parent="Collectibles" unique_id=646230904 instance=ExtResource("6")]
+position = Vector2(2272, 688)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb13" type="Area2D" parent="Collectibles" unique_id=467096397 instance=ExtResource("6")]
+position = Vector2(2592, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb14" type="Area2D" parent="Collectibles" unique_id=2103267147 instance=ExtResource("6")]
+position = Vector2(2784, 624)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb15" type="Area2D" parent="Collectibles" unique_id=2039865067 instance=ExtResource("6")]
+position = Vector2(3040, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb16" type="Area2D" parent="Collectibles" unique_id=1906639114 instance=ExtResource("6")]
+position = Vector2(3168, 560)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb17" type="Area2D" parent="Collectibles" unique_id=1889891266 instance=ExtResource("6")]
+position = Vector2(3424, 496)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb18" type="Area2D" parent="Collectibles" unique_id=1284147727 instance=ExtResource("6")]
+position = Vector2(3616, 496)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Orb19" type="Area2D" parent="Collectibles" unique_id=1677529440 instance=ExtResource("6")]
+position = Vector2(3744, 496)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_0emat")
+
+[node name="Cherry1" type="Area2D" parent="Collectibles" unique_id=989867625 instance=ExtResource("12_matrv")]
+position = Vector2(1088, 585)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("13_swl0b")
+
+[node name="Cherry2" type="Area2D" parent="Collectibles" unique_id=1000460359 instance=ExtResource("12_matrv")]
+position = Vector2(2208, 700)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("13_swl0b")
+
+[node name="Cherry3" type="Area2D" parent="Collectibles" unique_id=692948091 instance=ExtResource("12_matrv")]
+position = Vector2(3376, 525)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("13_swl0b")
+
+[node name="FinishSign" type="Label" parent="." unique_id=1259350206]
+offset_left = 3620.0
+offset_top = 430.0
+offset_right = 3830.0
+offset_bottom = 500.0
+theme_override_colors/font_color = Color(1, 0.8, 0.35, 1)
+theme_override_font_sizes/font_size = 24
+text = "CASH OUT >>"
+horizontal_alignment = 1
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1018095365]
+layer = 10
+
+[node name="Panel" type="PanelContainer" parent="HUD" unique_id=1183596864]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 490.0
+offset_bottom = 178.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("HUDStyle")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Panel" unique_id=949461908]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Panel/Margin" unique_id=1050756145]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Health" type="Label" parent="HUD/Panel/Margin/VBox" unique_id=986839599]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "ACE | HEALTH: 3 / 3"
+
+[node name="Currency" type="Label" parent="HUD/Panel/Margin/VBox" unique_id=860312000]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 1, 0.65, 1)
+text = "ORBS: 0"
+
+[node name="Controls" type="Label" parent="HUD/Panel/Margin/VBox" unique_id=1181912011]
+layout_mode = 2
+text = "A / D move   SPACE jump   J attack   R checkpoint"
+
+[node name="Checkpoint" type="Label" parent="HUD/Panel/Margin/VBox" unique_id=645904017]
+layout_mode = 2
+text = "CHECKPOINT: START"
+
+[node name="Message" type="Label" parent="HUD" unique_id=1165692325]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -55.0
+offset_right = 330.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0.83, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.01, 0.1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundEffects" type="Node" parent="." unique_id=1595026277]
+script = ExtResource("14_s8h1r")
+
+[node name="Checkpoint1" type="Area2D" parent="." unique_id=455856848 instance=ExtResource("15_xsec5")]
+position = Vector2(1248, 715)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("16_pxkcg")
+
+[node name="Checkpoint2" type="Area2D" parent="." unique_id=878280842 instance=ExtResource("15_xsec5")]
+position = Vector2(2464, 715)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("16_pxkcg")
+checkpoint_number = 2

@@ -1,0 +1,11 @@
+Generated with the built-in imagegen tool.
+
+Background: purple velvet magical casino, gold hanging card-suit charms, floating poker chips and amber spotlights; no platforms or characters.
+
+Terrain atlas: 2x2 grid of emerald felt top, green suit-pattern fill, red-black chip brickwork, and ornate gold diamond top.
+
+Character edits: external white background extraction only, retaining original design, canvas and animation poses, transparent PNG output.
+
+Cherry pickup: transparent pair of glossy red slot-machine cherries, joined green stems and leaf, crisp pixel art with burgundy outlines and a gold sparkle, no text.
+
+Crusher edit: external solid black background extraction only; preserve dark machine parts, dust, smoke, poses, exact layout and 1774 x 887 canvas. Built-in imagegen tool.

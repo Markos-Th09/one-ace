@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" format=3]
+[ext_resource type="Texture2D" path="res://assets/crusher_sprite_sheet.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Frame1"]
+atlas = ExtResource("1")
+region = Rect2(20, 10, 205, 210)
+
+[sub_resource type="AtlasTexture" id="Frame2"]
+atlas = ExtResource("1")
+region = Rect2(225, 85, 200, 230)
+
+[sub_resource type="AtlasTexture" id="Frame3"]
+atlas = ExtResource("1")
+region = Rect2(433, 175, 260, 170)
+
+[sub_resource type="AtlasTexture" id="Frame4"]
+atlas = ExtResource("1")
+region = Rect2(697, 220, 221, 125)
+
+[sub_resource type="AtlasTexture" id="Frame5"]
+atlas = ExtResource("1")
+region = Rect2(920, 220, 230, 125)
+
+[sub_resource type="AtlasTexture" id="Frame6"]
+atlas = ExtResource("1")
+region = Rect2(415, 575, 220, 280)
+
+[sub_resource type="AtlasTexture" id="Frame7"]
+atlas = ExtResource("1")
+region = Rect2(636, 580, 208, 270)
+
+[resource]
+animations = [{"name": &"hover", "speed": 8.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Frame1")}]},
+{"name": &"drop", "speed": 8.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("Frame2")}, {"duration": 1.0, "texture": SubResource("Frame3")}]},
+{"name": &"impact", "speed": 8.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("Frame4")}, {"duration": 1.0, "texture": SubResource("Frame5")}]},
+{"name": &"rise", "speed": 8.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("Frame6")}, {"duration": 1.0, "texture": SubResource("Frame7")}]}]

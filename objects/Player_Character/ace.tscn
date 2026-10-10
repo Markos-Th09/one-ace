@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://assets/player/player.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="Body"]
+radius = 28.0
+height = 106.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1160109728 groups=["player"]]
+collision_layer = 2
+script = ExtResource("1")
+ACCELERATION = 850.0
+MAX_SPEED = 160.0
+JUMP_FORCE = 310.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1638823815]
+scale = Vector2(0.33, 0.33)
+sprite_frames = ExtResource("2")
+animation = &"Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1935559035]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=386845012]
+shape = SubResource("Body")
+
+[node name="Health" type="Node" parent="." unique_id=1555417036]
+script = ExtResource("3")
+max_health = 4
+invulnerability_time = 0.9
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1957063219]
+position = Vector2(120, -90)
+limit_left = 0
+limit_top = 64
+limit_right = 3840
+limit_bottom = 1024
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0

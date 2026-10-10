@@ -1,0 +1,71 @@
+{
+  "counts": {
+    "scripts": 1,
+    "tests": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pending": 0,
+    "risky": 0,
+    "timed_out": 0,
+    "non_test_failures": 0
+  },
+  "discovered_tests": [
+    "res://tests/test_casino.gd::test_player_lands_on_tilemap_and_collects_orb_once",
+    "res://tests/test_casino.gd::test_damage_immunity_and_player_death",
+    "res://tests/test_casino.gd::test_chipper_attack_hits_after_windup",
+    "res://tests/test_casino.gd::test_dodging_windup_avoids_damage",
+    "res://tests/test_casino.gd::test_player_can_defeat_chipper",
+    "res://tests/test_casino.gd::test_jump_reaches_first_raised_platform",
+    "res://tests/test_level_features.gd::test_cherries_restore_two_hearts_and_stay_when_full",
+    "res://tests/test_level_features.gd::test_checkpoint_trigger_respawns_and_preserves_currency",
+    "res://tests/test_level_features.gd::test_crusher_warns_slams_and_recovers_with_sound",
+    "res://tests/test_level_features.gd::test_crusher_warning_can_be_dodged_and_enemy_can_die",
+    "res://tests/test_level_features.gd::test_all_supplied_sound_events_have_playable_streams",
+    "res://tests/test_route.gd::test_entire_platforming_route_reaches_cash_out"
+  ],
+  "duration_s": 25.203,
+  "failures": [],
+  "framework": "mini",
+  "notes": [],
+  "ok": true,
+  "results": [
+    {
+      "allow_errors": false,
+      "asserts": 4,
+      "duration_ms": 23803,
+      "failures": [],
+      "kind": "test",
+      "line": 0,
+      "message": "",
+      "script": "res://tests/test_route.gd",
+      "source": "res://tests/test_route.gd",
+      "status": "passed",
+      "test": "test_entire_platforming_route_reaches_cash_out"
+    }
+  ],
+  "scripts": [
+    {
+      "error": null,
+      "orphans": 0,
+      "script": "res://tests/test_route.gd",
+      "tests": 1
+    }
+  ],
+  "tests_dir": "res://tests",
+  "test_script_count": 3,
+  "command": [
+    "C:\\Users\\Billy\\Downloads\\Godot_v4.7.2-stable_win64.exe\\Godot_v4.7.2-stable_win64_console.exe",
+    "--headless",
+    "--debug",
+    "--ignore-error-breaks",
+    "--path",
+    "C:\\Users\\Billy\\Documents\\one-ace",
+    "--script",
+    "C:\\Users\\Billy\\.codex\\skills\\godot\\scripts\\test\\mini_test_runner.gd",
+    "{\"tests_dir\":\"tests\",\"select\":\"test_route\",\"test_timeout_seconds\":50.0,\"strict\":false}"
+  ],
+  "returncode": 0,
+  "status": "passed"
+}

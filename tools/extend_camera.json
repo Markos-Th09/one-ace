@@ -1,0 +1,1 @@
+{"scene_path": "objects/Player_Character/ace.tscn", "actions": [{"type": "configure_node", "node_path": "root/Camera2D", "properties": {"limit_right": 4608}}]}

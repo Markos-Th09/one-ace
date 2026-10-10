@@ -1,9 +1,9 @@
 {
   "counts": {
-    "scripts": 3,
-    "tests": 13,
-    "passed": 12,
-    "failed": 1,
+    "scripts": 4,
+    "tests": 17,
+    "passed": 17,
+    "failed": 0,
     "errors": 0,
     "skipped": 0,
     "pending": 0,
@@ -12,6 +12,10 @@
     "non_test_failures": 0
   },
   "discovered_tests": [
+    "res://tests/test_boss.gd::test_boss_blocks_finish_and_player_attack_unlocks_cash_out",
+    "res://tests/test_boss.gd::test_boss_specials_damage_once_and_can_be_jumped",
+    "res://tests/test_boss.gd::test_boss_retry_resets_fight_and_animation_sheet",
+    "res://tests/test_boss.gd::test_live_boss_cycles_telegraphs_both_specials_and_recovery",
     "res://tests/test_casino.gd::test_player_lands_on_tilemap_and_collects_orb_once",
     "res://tests/test_casino.gd::test_damage_immunity_and_player_death",
     "res://tests/test_casino.gd::test_chipper_attack_hits_after_windup",
@@ -24,27 +28,70 @@
     "res://tests/test_level_features.gd::test_crusher_warns_slams_and_recovers_with_sound",
     "res://tests/test_level_features.gd::test_crusher_warning_can_be_dodged_and_enemy_can_die",
     "res://tests/test_level_features.gd::test_all_supplied_sound_events_have_playable_streams",
-    "res://tests/test_route.gd::test_entire_platforming_route_reaches_cash_out"
+    "res://tests/test_route.gd::test_entire_platforming_route_reaches_boss_arena"
   ],
-  "duration_s": 37.296,
-  "failures": [
-    {
-      "script": "res://tests/test_level_features.gd",
-      "test": "test_actual_cherry_overlap_heals_player",
-      "line": 55,
-      "message": "Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int) (+1 more assertion failure(s))",
-      "status": "failed",
-      "source": "res://tests/test_level_features.gd"
-    }
-  ],
+  "duration_s": 61.484,
+  "failures": [],
   "framework": "mini",
   "notes": [],
-  "ok": false,
+  "ok": true,
   "results": [
     {
       "allow_errors": false,
+      "asserts": 8,
+      "duration_ms": 2410,
+      "failures": [],
+      "kind": "test",
+      "line": 0,
+      "message": "",
+      "script": "res://tests/test_boss.gd",
+      "source": "res://tests/test_boss.gd",
+      "status": "passed",
+      "test": "test_boss_blocks_finish_and_player_attack_unlocks_cash_out"
+    },
+    {
+      "allow_errors": false,
+      "asserts": 7,
+      "duration_ms": 1190,
+      "failures": [],
+      "kind": "test",
+      "line": 0,
+      "message": "",
+      "script": "res://tests/test_boss.gd",
+      "source": "res://tests/test_boss.gd",
+      "status": "passed",
+      "test": "test_boss_specials_damage_once_and_can_be_jumped"
+    },
+    {
+      "allow_errors": false,
+      "asserts": 9,
+      "duration_ms": 1237,
+      "failures": [],
+      "kind": "test",
+      "line": 0,
+      "message": "",
+      "script": "res://tests/test_boss.gd",
+      "source": "res://tests/test_boss.gd",
+      "status": "passed",
+      "test": "test_boss_retry_resets_fight_and_animation_sheet"
+    },
+    {
+      "allow_errors": false,
+      "asserts": 7,
+      "duration_ms": 8173,
+      "failures": [],
+      "kind": "test",
+      "line": 0,
+      "message": "",
+      "script": "res://tests/test_boss.gd",
+      "source": "res://tests/test_boss.gd",
+      "status": "passed",
+      "test": "test_live_boss_cycles_telegraphs_both_specials_and_recovery"
+    },
+    {
+      "allow_errors": false,
       "asserts": 3,
-      "duration_ms": 826,
+      "duration_ms": 1650,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -57,7 +104,7 @@
     {
       "allow_errors": false,
       "asserts": 7,
-      "duration_ms": 1061,
+      "duration_ms": 1295,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -70,7 +117,7 @@
     {
       "allow_errors": false,
       "asserts": 3,
-      "duration_ms": 736,
+      "duration_ms": 1701,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -83,7 +130,7 @@
     {
       "allow_errors": false,
       "asserts": 1,
-      "duration_ms": 846,
+      "duration_ms": 1863,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -96,7 +143,7 @@
     {
       "allow_errors": false,
       "asserts": 4,
-      "duration_ms": 208,
+      "duration_ms": 1218,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -109,7 +156,7 @@
     {
       "allow_errors": false,
       "asserts": 2,
-      "duration_ms": 1194,
+      "duration_ms": 2186,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -122,7 +169,7 @@
     {
       "allow_errors": false,
       "asserts": 8,
-      "duration_ms": 240,
+      "duration_ms": 1220,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -135,7 +182,7 @@
     {
       "allow_errors": false,
       "asserts": 9,
-      "duration_ms": 1576,
+      "duration_ms": 2589,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -148,31 +195,20 @@
     {
       "allow_errors": false,
       "asserts": 3,
-      "duration_ms": 208,
-      "failures": [
-        {
-          "line": 55,
-          "message": "Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int)",
-          "source": "res://tests/test_level_features.gd"
-        },
-        {
-          "line": 56,
-          "message": "Consumed healing item is removed \u03b2\u20ac\u201d assert_false: expected false but got true",
-          "source": "res://tests/test_level_features.gd"
-        }
-      ],
+      "duration_ms": 1242,
+      "failures": [],
       "kind": "test",
-      "line": 55,
-      "message": "Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int) (+1 more assertion failure(s))",
+      "line": 0,
+      "message": "",
       "script": "res://tests/test_level_features.gd",
       "source": "res://tests/test_level_features.gd",
-      "status": "failed",
+      "status": "passed",
       "test": "test_actual_cherry_overlap_heals_player"
     },
     {
       "allow_errors": false,
       "asserts": 6,
-      "duration_ms": 3476,
+      "duration_ms": 4547,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -185,7 +221,7 @@
     {
       "allow_errors": false,
       "asserts": 4,
-      "duration_ms": 1566,
+      "duration_ms": 2626,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -198,7 +234,7 @@
     {
       "allow_errors": false,
       "asserts": 27,
-      "duration_ms": 215,
+      "duration_ms": 1121,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -210,8 +246,8 @@
     },
     {
       "allow_errors": false,
-      "asserts": 4,
-      "duration_ms": 23772,
+      "asserts": 5,
+      "duration_ms": 23460,
       "failures": [],
       "kind": "test",
       "line": 0,
@@ -219,10 +255,16 @@
       "script": "res://tests/test_route.gd",
       "source": "res://tests/test_route.gd",
       "status": "passed",
-      "test": "test_entire_platforming_route_reaches_cash_out"
+      "test": "test_entire_platforming_route_reaches_boss_arena"
     }
   ],
   "scripts": [
+    {
+      "error": null,
+      "orphans": 0,
+      "script": "res://tests/test_boss.gd",
+      "tests": 4
+    },
     {
       "error": null,
       "orphans": 0,
@@ -243,9 +285,9 @@
     }
   ],
   "tests_dir": "res://tests",
-  "test_script_count": 3,
+  "test_script_count": 4,
   "command": [
-    "C:\\Users\\Billy\\Downloads\\Godot_v4.7.2-stable_win64.exe\\Godot_v4.7.2-stable_win64_console.exe",
+    "C:/Users/Billy/Downloads/Godot_v4.7.2-stable_win64.exe/Godot_v4.7.2-stable_win64_console.exe",
     "--headless",
     "--debug",
     "--ignore-error-breaks",
@@ -255,7 +297,6 @@
     "C:\\Users\\Billy\\.codex\\skills\\godot\\scripts\\test\\mini_test_runner.gd",
     "{\"tests_dir\":\"tests\",\"select\":\"\",\"test_timeout_seconds\":50.0,\"strict\":false}"
   ],
-  "returncode": 1,
-  "status": "failed",
-  "output_tail": "[MINI_TEST] end res://tests/test_casino.gd::test_player_lands_on_tilemap_and_collects_orb_once {\"allow_errors\":false,\"asserts\":3,\"duration_ms\":826,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_player_lands_on_tilemap_and_collects_orb_once\"}\n[MINI_TEST] begin res://tests/test_casino.gd::test_damage_immunity_and_player_death\n[MINI_TEST] end res://tests/test_casino.gd::test_damage_immunity_and_player_death {\"allow_errors\":false,\"asserts\":7,\"duration_ms\":1061,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_damage_immunity_and_player_death\"}\n[MINI_TEST] begin res://tests/test_casino.gd::test_chipper_attack_hits_after_windup\n[MINI_TEST] end res://tests/test_casino.gd::test_chipper_attack_hits_after_windup {\"allow_errors\":false,\"asserts\":3,\"duration_ms\":736,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_chipper_attack_hits_after_windup\"}\n[MINI_TEST] begin res://tests/test_casino.gd::test_dodging_windup_avoids_damage\n[MINI_TEST] end res://tests/test_casino.gd::test_dodging_windup_avoids_damage {\"allow_errors\":false,\"asserts\":1,\"duration_ms\":846,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_dodging_windup_avoids_damage\"}\n[MINI_TEST] begin res://tests/test_casino.gd::test_player_can_defeat_chipper\n[MINI_TEST] end res://tests/test_casino.gd::test_player_can_defeat_chipper {\"allow_errors\":false,\"asserts\":4,\"duration_ms\":208,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_player_can_defeat_chipper\"}\n[MINI_TEST] begin res://tests/test_casino.gd::test_jump_reaches_first_raised_platform\n[MINI_TEST] end res://tests/test_casino.gd::test_jump_reaches_first_raised_platform {\"allow_errors\":false,\"asserts\":2,\"duration_ms\":1194,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_jump_reaches_first_raised_platform\"}\n[MINI_TEST] script_end res://tests/test_casino.gd {\"orphans\":0,\"tests\":6}\n[MINI_TEST] script res://tests/test_level_features.gd\n[MINI_TEST] begin res://tests/test_level_features.gd::test_cherries_restore_two_hearts_and_stay_when_full\n[MINI_TEST] end res://tests/test_level_features.gd::test_cherries_restore_two_hearts_and_stay_when_full {\"allow_errors\":false,\"asserts\":8,\"duration_ms\":240,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_cherries_restore_two_hearts_and_stay_when_full\"}\n[MINI_TEST] begin res://tests/test_level_features.gd::test_checkpoint_trigger_respawns_and_preserves_currency\n[MINI_TEST] end res://tests/test_level_features.gd::test_checkpoint_trigger_respawns_and_preserves_currency {\"allow_errors\":false,\"asserts\":9,\"duration_ms\":1576,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_checkpoint_trigger_respawns_and_preserves_currency\"}\n[MINI_TEST] begin res://tests/test_level_features.gd::test_actual_cherry_overlap_heals_player\n[MINI_TEST] end res://tests/test_level_features.gd::test_actual_cherry_overlap_heals_player {\"allow_errors\":false,\"asserts\":3,\"duration_ms\":208,\"failures\":[{\"line\":55,\"message\":\"Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int)\",\"source\":\"res://tests/test_level_features.gd\"},{\"line\":56,\"message\":\"Consumed healing item is removed \u03b2\u20ac\u201d assert_false: expected false but got true\",\"source\":\"res://tests/test_level_features.gd\"}],\"kind\":\"test\",\"line\":55,\"message\":\"Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int) (+1 more assertion failure(s))\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"failed\",\"test\":\"test_actual_cherry_overlap_heals_player\"}\n[MINI_TEST] begin res://tests/test_level_features.gd::test_crusher_warns_slams_and_recovers_with_sound\n[MINI_TEST] end res://tests/test_level_features.gd::test_crusher_warns_slams_and_recovers_with_sound {\"allow_errors\":false,\"asserts\":6,\"duration_ms\":3476,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_crusher_warns_slams_and_recovers_with_sound\"}\n[MINI_TEST] begin res://tests/test_level_features.gd::test_crusher_warning_can_be_dodged_and_enemy_can_die\n[MINI_TEST] end res://tests/test_level_features.gd::test_crusher_warning_can_be_dodged_and_enemy_can_die {\"allow_errors\":false,\"asserts\":4,\"duration_ms\":1566,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_crusher_warning_can_be_dodged_and_enemy_can_die\"}\n[MINI_TEST] begin res://tests/test_level_features.gd::test_all_supplied_sound_events_have_playable_streams\n[MINI_TEST] end res://tests/test_level_features.gd::test_all_supplied_sound_events_have_playable_streams {\"allow_errors\":false,\"asserts\":27,\"duration_ms\":215,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_all_supplied_sound_events_have_playable_streams\"}\n[MINI_TEST] script_end res://tests/test_level_features.gd {\"orphans\":0,\"tests\":6}\n[MINI_TEST] script res://tests/test_route.gd\n[MINI_TEST] begin res://tests/test_route.gd::test_entire_platforming_route_reaches_cash_out\nROUTE jump 0 at (391.5838, 714.9338)\nROUTE jump 1 at (741.7264, 650.9338)\nROUTE jump 2 at (1101.757, 586.9338)\nROUTE jump 3 at (1672.459, 652.3073)\nROUTE jump 4 at (1827.924, 650.9971)\nROUTE jump 5 at (2320.901, 714.9995)\nROUTE jump 6 at (2523.577, 714.9994)\nROUTE jump 7 at (2822.183, 650.9338)\nROUTE jump 8 at (3262.225, 586.9338)\n[MINI_TEST] end res://tests/test_route.gd::test_entire_platforming_route_reaches_cash_out {\"allow_errors\":false,\"asserts\":4,\"duration_ms\":23772,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_route.gd\",\"source\":\"res://tests/test_route.gd\",\"status\":\"passed\",\"test\":\"test_entire_platforming_route_reaches_cash_out\"}\n[MINI_TEST] script_end res://tests/test_route.gd {\"orphans\":0,\"tests\":1}\n[MINI_TEST_RESULT] {\"counts\":{\"errors\":0,\"failed\":1,\"non_test_failures\":0,\"passed\":12,\"pending\":0,\"risky\":0,\"scripts\":3,\"skipped\":0,\"tests\":13,\"timed_out\":0},\"discovered_tests\":[\"res://tests/test_casino.gd::test_player_lands_on_tilemap_and_collects_orb_once\",\"res://tests/test_casino.gd::test_damage_immunity_and_player_death\",\"res://tests/test_casino.gd::test_chipper_attack_hits_after_windup\",\"res://tests/test_casino.gd::test_dodging_windup_avoids_damage\",\"res://tests/test_casino.gd::test_player_can_defeat_chipper\",\"res://tests/test_casino.gd::test_jump_reaches_first_raised_platform\",\"res://tests/test_level_features.gd::test_cherries_restore_two_hearts_and_stay_when_full\",\"res://tests/test_level_features.gd::test_checkpoint_trigger_respawns_and_preserves_currency\",\"res://tests/test_level_features.gd::test_actual_cherry_overlap_heals_player\",\"res://tests/test_level_features.gd::test_crusher_warns_slams_and_recovers_with_sound\",\"res://tests/test_level_features.gd::test_crusher_warning_can_be_dodged_and_enemy_can_die\",\"res://tests/test_level_features.gd::test_all_supplied_sound_events_have_playable_streams\",\"res://tests/test_route.gd::test_entire_platforming_route_reaches_cash_out\"],\"duration_s\":36.066,\"failures\":[{\"line\":55,\"message\":\"Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int) (+1 more assertion failure(s))\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"failed\",\"test\":\"test_actual_cherry_overlap_heals_player\"}],\"framework\":\"mini\",\"notes\":[],\"ok\":false,\"results\":[{\"allow_errors\":false,\"asserts\":3,\"duration_ms\":826,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_player_lands_on_tilemap_and_collects_orb_once\"},{\"allow_errors\":false,\"asserts\":7,\"duration_ms\":1061,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_damage_immunity_and_player_death\"},{\"allow_errors\":false,\"asserts\":3,\"duration_ms\":736,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_chipper_attack_hits_after_windup\"},{\"allow_errors\":false,\"asserts\":1,\"duration_ms\":846,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_dodging_windup_avoids_damage\"},{\"allow_errors\":false,\"asserts\":4,\"duration_ms\":208,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_player_can_defeat_chipper\"},{\"allow_errors\":false,\"asserts\":2,\"duration_ms\":1194,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_casino.gd\",\"source\":\"res://tests/test_casino.gd\",\"status\":\"passed\",\"test\":\"test_jump_reaches_first_raised_platform\"},{\"allow_errors\":false,\"asserts\":8,\"duration_ms\":240,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_cherries_restore_two_hearts_and_stay_when_full\"},{\"allow_errors\":false,\"asserts\":9,\"duration_ms\":1576,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_checkpoint_trigger_respawns_and_preserves_currency\"},{\"allow_errors\":false,\"asserts\":3,\"duration_ms\":208,\"failures\":[{\"line\":55,\"message\":\"Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int)\",\"source\":\"res://tests/test_level_features.gd\"},{\"line\":56,\"message\":\"Consumed healing item is removed \u03b2\u20ac\u201d assert_false: expected false but got true\",\"source\":\"res://tests/test_level_features.gd\"}],\"kind\":\"test\",\"line\":55,\"message\":\"Real Area2D overlap heals without a direct pickup call \u03b2\u20ac\u201d assert_eq: expected 4 (int) but got 2 (int) (+1 more assertion failure(s))\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"failed\",\"test\":\"test_actual_cherry_overlap_heals_player\"},{\"allow_errors\":false,\"asserts\":6,\"duration_ms\":3476,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_crusher_warns_slams_and_recovers_with_sound\"},{\"allow_errors\":false,\"asserts\":4,\"duration_ms\":1566,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_crusher_warning_can_be_dodged_and_enemy_can_die\"},{\"allow_errors\":false,\"asserts\":27,\"duration_ms\":215,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_level_features.gd\",\"source\":\"res://tests/test_level_features.gd\",\"status\":\"passed\",\"test\":\"test_all_supplied_sound_events_have_playable_streams\"},{\"allow_errors\":false,\"asserts\":4,\"duration_ms\":23772,\"failures\":[],\"kind\":\"test\",\"line\":0,\"message\":\"\",\"script\":\"res://tests/test_route.gd\",\"source\":\"res://tests/test_route.gd\",\"status\":\"passed\",\"test\":\"test_entire_platforming_route_reaches_cash_out\"}],\"scripts\":[{\"error\":null,\"orphans\":0,\"script\":\"res://tests/test_casino.gd\",\"tests\":6},{\"error\":null,\"orphans\":0,\"script\":\"res://tests/test_level_features.gd\",\"tests\":6},{\"error\":null,\"orphans\":0,\"script\":\"res://tests/test_route.gd\",\"tests\":1}],\"tests_dir\":\"res://tests\"}"
+  "returncode": 0,
+  "status": "passed"
 }

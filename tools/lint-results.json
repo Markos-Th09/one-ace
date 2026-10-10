@@ -21,13 +21,13 @@
     "animation_ref": 0
   },
   "scan_summary": {
-    "gd": 39,
-    "tscn": 16,
-    "tres": 6,
+    "gd": 42,
+    "tscn": 18,
+    "tres": 7,
     "shader": 1,
     "project_godot": 1,
-    "scene_script_pairs": 34,
-    "node_paths_checked": 117,
+    "scene_script_pairs": 37,
+    "node_paths_checked": 126,
     "skipped_dynamic_paths": 0,
     "skipped_gdignore_dirs": 0
   },

@@ -18,6 +18,12 @@ func capture() -> void:
 		await process_frame
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://assets/casino/late-level-preview.png")
+	player.global_position = Vector2(4000, 523)
+	player.get_node("Camera2D").reset_smoothing()
+	for frame: int in range(30):
+		await process_frame
+	await RenderingServer.frame_post_draw
+	root.get_texture().get_image().save_png("res://assets/casino/boss-preview.png")
 	level.queue_free()
 	await process_frame
 	quit()

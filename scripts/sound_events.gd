@@ -18,6 +18,9 @@ func play_event(event: StringName) -> void:
 	match event:
 		&"chipper_attack": stream = CHIP
 		&"crusher_slam": stream = SLAM
+		&"boss_entrance": stream = ENTRANCE
+		&"boss_dash": stream = SWING
+		&"boss_spin": stream = SPIN
 		&"crusher_warning":
 			stream = ENTRANCE
 			volume = -16.0

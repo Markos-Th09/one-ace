@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		respawn_time -= delta
 		if respawn_time <= 0.0:
 			respawn_at_checkpoint()
-	if not finished and player.is_alive() and player.global_position.x > 3690.0 and player.global_position.y < 600.0:
+	if not finished and $BossArena.cleared and player.is_alive() and player.global_position.x > 4510.0 and player.global_position.y < 600.0:
 		finished = true
 		message.text = "HOUSE BEATEN!\nPress R to play again"
 		player.set_physics_process(false)
@@ -52,6 +52,7 @@ func respawn_at_checkpoint() -> void:
 		return
 	respawn_time = -1.0
 	message.text = ""
+	$BossArena.reset_arena()
 	for enemy: Node in get_tree().get_nodes_in_group(&"enemy"):
 		if enemy.has_method("reset_to_spawn") and enemy.health.is_alive():
 			enemy.reset_to_spawn()

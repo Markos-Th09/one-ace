@@ -1,0 +1,1 @@
+{"scene_path":"scenes/casino_level.tscn","actions":[{"type":"configure_node","node_path":"root/FinishSign","properties":{"position":{"__type":"Vector2","x":4300,"y":400},"text":"BEAT BLACK CHIPPER\nCASH OUT >>"}}]}

@@ -1,0 +1,1 @@
+{"scene_path": "objects/boss_arena.tscn", "actions": [{"type": "configure_node", "node_path": "root/BlackChipper", "properties": {"position": {"__type": "Vector2", "x": 4100, "y": 513}}}, {"type": "configure_node", "node_path": "root/RightGate", "properties": {"position": {"__type": "Vector2", "x": 4598, "y": 226}}}]}
